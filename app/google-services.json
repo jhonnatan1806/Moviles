@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "115409934662",
+    "project_id": "pc3moviles",
+    "storage_bucket": "pc3moviles.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:115409934662:android:23c913b353f885f02bed47",
+        "android_client_info": {
+          "package_name": "com.example.pc3moviles"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxc66gPO6-BUUZqW3V7P3bWbTAXwG1jrY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
