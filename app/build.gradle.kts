@@ -8,6 +8,10 @@ android {
     namespace = "com.example.pc3moviles"
     compileSdk = 34
 
+    buildFeatures{
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.example.pc3moviles"
         minSdk = 29
@@ -46,7 +50,11 @@ dependencies {
 
     implementation("com.github.bumptech.glide:glide:4.15.1")
     implementation(platform("com.google.firebase:firebase-bom:33.6.0"))
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.12.0"))
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor")
 
     implementation(libs.firebase.storage.ktx)
     implementation(libs.firebase.database.ktx)

@@ -67,11 +67,11 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnCamara"
+            android:id="@+id/btnCapturar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Camara" />
+            android:text="Capturar" />
 
         <Space
             android:layout_width="16dp"
@@ -103,7 +103,7 @@
         android:layout_weight="0" />
 
     <ListView
-        android:id="@+id/lvFotos"
+        android:id="@+id/lvPhotos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:dividerHeight="1dp" />

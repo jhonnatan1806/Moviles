@@ -5,11 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.ImageView
-import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.example.pc3moviles.databinding.ListViewBinding
 
-class FotoAdapter(private val context: Context, private val fotos: List<ClaseFoto>) : BaseAdapter() {
+class PhotoListAdapter(private val context: Context, private val fotos: List<PhotoModel>) : BaseAdapter() {
 
     override fun getCount(): Int {
         return fotos.size
@@ -24,24 +23,30 @@ class FotoAdapter(private val context: Context, private val fotos: List<ClaseFot
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val view: View = convertView ?: LayoutInflater.from(context).inflate(R.layout.list_view, parent, false)
-
-        // Obtener elementos del diseño
-        val ivFoto = view.findViewById<ImageView>(R.id.ivFoto)
-        val tvNombre = view.findViewById<TextView>(R.id.tvNombre)
-        val tvHayRostro = view.findViewById<TextView>(R.id.tvHayRostro)
+        val binding: ListViewBinding = if (convertView == null) {
+            ListViewBinding.inflate(LayoutInflater.from(context), parent, false)
+        } else {
+            convertView.tag as ListViewBinding
+        }
 
         // Obtener la foto actual
         val foto = fotos[position]
 
-        // Configurar los datos
-        tvNombre.text = foto.nombre
-        tvHayRostro.text = foto.hayrostro
+
+        binding.tvNombre.text = foto.nombre
+        binding.tvHayRostro.text = foto.hayrostro
 
         // Agregar un parámetro único para evitar la caché
         val urlConCacheBusting = "${foto.miUrl}?timestamp=${System.currentTimeMillis()}"
-        Glide.with(context).load(urlConCacheBusting).into(ivFoto)
 
-        return view
+        // Cargar la imagen con Glide
+        Glide.with(context).load(urlConCacheBusting).into(binding.ivPhoto)
+
+        // Asociar el binding al convertView para reutilización
+        if (convertView == null) {
+            binding.root.tag = binding
+        }
+
+        return binding.root
     }
 }
